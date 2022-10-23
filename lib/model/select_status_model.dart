@@ -29,9 +29,9 @@ class Country {
     iso3 = json['iso3'];
     countrycode = json['countrycode'];
     frenchname = json['frenchname'];
-    if (json['state'] != null) {
+    if (json['states'] != null) {
       state = [];
-      json['state'].forEach((v) {
+      json['states'].forEach((v) {
         state!.add(new Region.fromJson(v));
       });
     }
@@ -48,7 +48,7 @@ class Country {
     data['countrycode'] = this.countrycode;
     data['frenchname'] = this.frenchname;
     if (this.state != null) {
-      data['state'] = this.state!.map((v) => v.toJson()).toList();
+      data['states'] = this.state!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -66,9 +66,9 @@ class Region {
     id = json['id'];
     name = json['name'];
     countryId = json['country_id'];
-    if (json['city'] != null) {
+    if (json['cities'] != null) {
       city = [];
-      json['city'].forEach((v) {
+      json['cities'].forEach((v) {
         city!.add(new City.fromJson(v));
       });
     }
@@ -80,7 +80,7 @@ class Region {
     data['name'] = this.name;
     data['country_id'] = this.countryId;
     if (this.city != null) {
-      data['city'] = this.city!.map((v) => v.toJson()).toList();
+      data['cities'] = this.city!.map((v) => v.toJson()).toList();
     }
     return data;
   }
